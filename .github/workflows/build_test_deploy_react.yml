@@ -55,15 +55,15 @@ jobs:
           npm run build --if-present
         env: 
           REACT_APP_SERVER_URL: ${{ secrets.REACT_APP_SERVER_URL }}
-      - name: build and publish package on NPM 📦
-        run: |
-          git config --global user.email "loise.fenoll@ynov.com"
-          git config --global user.name "Loise Fenoll"
-          npm run build-npm
-          npm version patch
-          npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #- name: build and publish package on NPM 📦
+      #  run: |
+      #    git config --global user.email "loise.fenoll@ynov.com"
+      #    git config --global user.name "Loise Fenoll"
+      #    npm run build-npm
+      #    npm version patch
+      #    npm publish
+      #  env:
+      #    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
