@@ -1,6 +1,6 @@
 {
   "name": "ci-cd-ynov",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": false,
   "homepage": "https://loise.github.io/ci-cd-ynov/",
   "dependencies": {

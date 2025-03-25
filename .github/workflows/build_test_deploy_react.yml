@@ -55,6 +55,8 @@ jobs:
           npm run build --if-present
         env: 
           REACT_APP_SERVER_URL: ${{ secrets.REACT_APP_SERVER_URL }}
+      - name: Authenticate with npm
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
       - name : check version
         run : |
           LOCAL_VERSION=$(node -p "require('./package.json').version")
