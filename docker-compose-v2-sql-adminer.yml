@@ -23,27 +23,4 @@ services:
     restart: always
     ports:
       - 8080:8080
-  server:
-    image: nodejs
-    build: .
-    ports:
-      - 8000:8000
-    environment:
-      - MYSQL_HOST=db
-      - PORT=8000
-    depends_on:
-      - db  
-  react:
-    image: react
-    build: .
-    ports:
-      - 3000:3000
-    environment:
-      <<: *common-variables
-    volumes:
-      - .:/app
-      - /app/node_modules
-      - /app/server
-    depends_on:
-      - server
 
