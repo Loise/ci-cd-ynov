@@ -61,7 +61,7 @@ jobs:
           NPM_VERSION=$(npm view ci-cd-ynov version)
           if ["$LOCAL_VERSION" != $"NPM_VERSION"]
             echo "NEW_VERSION=true" >> $GITHUB_ENV
-          else 
+          else
             echo "NEW_VERSION=false" >> $GITHUB_ENV
           fi
       - name: build and publish package on NPM 📦
