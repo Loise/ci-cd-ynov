@@ -61,7 +61,7 @@ jobs:
         run : |
           LOCAL_VERSION=$(node -p "require('./package.json').version")
           NPM_VERSION=$(npm view ci-cd-ynov version)
-          if ["$LOCAL_VERSION" != "$NPM_VERSION"]; then
+          if [ "$LOCAL_VERSION" != "$NPM_VERSION" ]; then
             echo "NEW_VERSION=true" >> $GITHUB_ENV
           else
             echo "NEW_VERSION=false" >> $GITHUB_ENV
