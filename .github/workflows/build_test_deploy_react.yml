@@ -1,4 +1,7 @@
 name: Build, Test and Deploy React Application
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
 # Controls when the action will run. 
 on:
@@ -86,7 +89,7 @@ jobs:
           if-no-files-found: error
 
   # Deploy job
-  deploy:
+  deploy_pages:
     # Deploy to the github-pages environment
     environment:
       name: github-pages
@@ -109,3 +112,16 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        
+  deploy_vercel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Build Project Artifacts
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy to prod
+        run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
