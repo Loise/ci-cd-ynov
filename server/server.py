@@ -16,7 +16,10 @@ class Login(BaseModel):
 
 
 app = FastAPI()
-origins = ["*"]
+origins = [
+    "https://loise.github.io/",
+    "http://localhost:3000",
+]
 
 app.add_middleware(
     CORSMiddleware,
