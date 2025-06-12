@@ -26,6 +26,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+async def hello_world():
+    return "Hello world"
+
 @app.get("/users")
 async def get_users():
     # Create a connection to the database
